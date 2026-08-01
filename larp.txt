@@ -18,7 +18,7 @@ $f.Controls.Add($l)
 $t=New-Object Windows.Forms.Timer
 $t.Interval=150
 $t.Add_Tick({
-    $l.Text=("SYSTEM FAILURE`n"+(Get-Random))
+    $l.Text=("FEAR NO CASH HAS TAKEN CONTROL`n"+(Get-Random))
     $l.ForeColor=("Red","Green","White","Yellow" | Get-Random)
     $f.BackColor=("Black","DarkRed","DarkBlue" | Get-Random)
     [console]::beep((Get-Random -Min 200 -Max 1000),50)
