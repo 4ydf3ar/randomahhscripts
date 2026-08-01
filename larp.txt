@@ -1,0 +1,28 @@
+Add-Type -AssemblyName System.Windows.Forms
+Add-Type -AssemblyName System.Drawing
+
+$f=New-Object Windows.Forms.Form
+$f.WindowState="Maximized"
+$f.FormBorderStyle="None"
+$f.TopMost=$true
+$f.BackColor="Black"
+
+$l=New-Object Windows.Forms.Label
+$l.Dock="Fill"
+$l.TextAlign="MiddleCenter"
+$l.Font=New-Object Drawing.Font("Consolas",60)
+$l.ForeColor="Red"
+$l.Text="SYSTEM ERROR"
+$f.Controls.Add($l)
+
+$t=New-Object Windows.Forms.Timer
+$t.Interval=150
+$t.Add_Tick({
+    $l.Text=("SYSTEM FAILURE`n"+(Get-Random))
+    $l.ForeColor=("Red","Green","White","Yellow" | Get-Random)
+    $f.BackColor=("Black","DarkRed","DarkBlue" | Get-Random)
+    [console]::beep((Get-Random -Min 200 -Max 1000),50)
+})
+$t.Start()
+
+$f.ShowDialog()
